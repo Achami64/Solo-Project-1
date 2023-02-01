@@ -1,11 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const { web } = require('webpack');
+const webpack = require('webpack')
 
 // All the configuration necessary for Webpack to properly process file assets into a bundle
 module.exports = {
   // dynamically setting up the webpack mode
   mode: process.env.NODE_ENV,
-  entry: './client/index.js' ,
+  entry: './client/index.js',
   output: {
     path: path.join(__dirname, 'build'),
     publicPath: '/',
@@ -57,6 +59,10 @@ module.exports = {
         ],
       },
       {
+        test: /.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.(png|jpg|gif|woff|woff2|eot|ttf|svg|ico)$/,
         use: [
           {
@@ -73,12 +79,25 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
+    }),
     new HtmlWebpackPlugin({
       template: './index.html',
     }),
   ],
   resolve: {
     // Enable importing JS / JSX files without specifying their extension
+    fallback: {
+      url: require.resolve('url/'),
+    },
     extensions: ['.js', '.jsx'],
   },
+  resolve: {
+    fallback: {
+      path: require.resolve('path-browserify'),
+    },
+  }
 };

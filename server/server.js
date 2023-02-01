@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const cardController = require('./controllers/cardController');
 // require statement for exported model. Possible name is card
 // Require statement(s) for controllers
 
@@ -20,12 +21,24 @@ app.use('/client', express.static(path.resolve(__dirname, '../client')));
 // Routes below
 
 app.get('/', (req,res) => {
-    res.status(200).sendFile(path.join(__dirname, '../index.html'));
+   return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+});
+
+app.get('/cards', cardController.getCards, (req, res) => {
+    return res.status(200).json(res.locals.cards);
+});
+
+app.post('/cards', cardController.createCard, (req, res) => {
+    return res.status(200).json(res.locals.newCard);
+})
+
+app.delete('/cards', cardController.deleteCard, (req, res) => {
+    return res.status(200).json(res.locals.deletedCard);
 })
 
 app.use((req ,res, next) => {
     res.sendStatus(404);
-})
+});
 
 // Global error handler below
 
@@ -35,7 +48,7 @@ app.use((err, req, res, next) => {
         status: 500,
         message: {err: 'An error occured'},
     };
-    const newError = Object.assign({}, defaultError, err);
+    const errObj = Object.assign({}, defaultError, err);
     console.log(errObj.log);
 
     res.status(errObj.status).send(errObj.message);

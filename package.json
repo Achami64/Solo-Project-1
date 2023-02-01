@@ -2,47 +2,50 @@
   "name": "solo-project-1",
   "version": "1.0.0",
   "description": "First solo project for codesmith",
-  "main": "index.js",
-  "browser" : {
+  "main": "./client/index.js",
+  "browser": {
     "./client/index.js": "./client/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/server.js",
-    "build": "NODE_ENV=production webpack",
-    "dev": "NODE_ENV=development webpack serve --open & nodemon server/server.js "
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "build",
-      "client"
-    ]
+    "test": "to be added later",
+    "start": "cross-env NODE_ENV=production nodemon server/server.js",
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development webpack serve & nodemon server/server.js"
   },
   "dependencies": {
-    "css-loader": "^6.5.1",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "fs": "^0.0.1-security",
     "mongoose": "6.7.5",
+    "npm-check": "^6.0.1",
+    "path": "^0.12.7",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-hot-loader": "^4.6.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "style-loader": "^3.3.1"
+    "style-loader": "^3.3.1",
+    "url": "^0.11.0"
   },
   "devDependencies": {
-    "babel-loader": "^9.1.2",
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
+    "babel-loader": "^9.1.2",
+    "concurrently": "^7.6.0",
     "copy-webpack-plugin": "^9.0.1",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.3",
+    "dist": "^0.1.2",
     "eslint": "^7.12.1",
     "eslint-plugin-css-modules": "^2.11.0",
     "eslint-plugin-react": "^7.21.5",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^5.5.0",
     "nodemon": "^2.0.20",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "url-loader": "^4.1.1",
     "webpack": "^5.62.1",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0",
