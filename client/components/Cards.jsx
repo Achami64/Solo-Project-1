@@ -2,39 +2,60 @@ import React, { Component } from 'react';
 import '../css/styles.css';
 import CardCreator from './CardCreator.jsx';
 
-
 class Cards extends Component {
-    render() {
-        return (
-            <div className='main-tainer'> 
-            {/* image would hopefully go here */}
-            <div className='title'> 
-            Happy thanksgiving!
-            </div>
-            <div className='body'> 
-            From me and my family to you and yours
-            </div>
-            <div className='to-from'>
-                To: Me
-                From Yousuf 
-            </div>
-            </div>
-        )
+  constructor(props) {
+      super(props);
+      this.state = {
+          selectedCard: {},
+      }
+    this.handleChangeUpdate = this.handleChangeUpdate.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.cards !== this.props.cards) {
+      this.setState({
+        selectedCard: this.props.cards[0],
+      });
     }
+  }
+
+  handleChangeUpdate(event) {
+    const selectedCard = this.props.cards.filter(
+      ({ body }) => body === event.target.value
+    );
+    this.setState({
+      selectedCard: selectedCard[0],
+    });
+  }
+
+  render() {
+    const { selectedCard } = this.state;
+    return (
+      <div className="main-tainer">
+        {/* image would hopefully go here */}
+        <div className="title">{selectedCard.title}</div>
+        <div className="body">{selectedCard.body}</div>
+        <div className="to-from">
+          To:{selectedCard.to}
+          <br></br>
+          From: {selectedCard.from}
+        </div>
+        <select
+          className="drop-down-menu"
+          value={selectedCard.body}
+          onChange={this.handleChangeUpdate}
+        >
+          {this.props.cards.map(({ title, body, to, from }) => {
+            return (
+              <option key={body} value={body}>
+                {title}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+    );
+  }
 }
 
 export default Cards;
-
-
-/* <div class = 'mainContainer'>
-//  <div class = 'to-container'>
-//    to: 
-//  </div>
-//  <div class = 'body-container'>
-//  <img src = 'Hi'> 
-//  Hey there buggah
-//  </div>
-//  <div class = 'from-container'>
-//  from:
-//  </div>
-//  </div> */

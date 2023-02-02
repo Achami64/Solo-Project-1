@@ -31,19 +31,25 @@ class CardCreator extends Component {
     })
       .then((response) => response.json())
       .then((data) =>
-        this.setState(
-          {
-            cards: [...this.props.cards, data],
-          }
-        )
+        this.setState({
+          cards: [...this.props.cards, data],
+        })
       );
+      window.location.reload(true);
   }
 
   handleClickDelete() {}
   render() {
     return (
       <div>
-        <Cards cards={this.props.cards} />
+        <Cards
+          cards={this.props.cards}
+          title={this.props.title}
+          body={this.props.body}
+          to={this.props.to}
+          from={this.props.from}
+          selection = {this.props.selection}
+        />
         <button className="addCard" onClick={this.handleClickAdd}>
           Add Card
         </button>

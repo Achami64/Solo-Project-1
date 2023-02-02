@@ -28,7 +28,6 @@ class MainContainer extends Component {
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    console.log({ [event.target.name]: event.target.value });
   }
 
   render() {
@@ -42,7 +41,7 @@ class MainContainer extends Component {
           from={this.state.from}
         />
         <form>
-          Title
+          Title:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input
             className="title-input"
             name="title"
@@ -51,7 +50,7 @@ class MainContainer extends Component {
           />
         </form>
         <form>
-          Body
+          Body: &nbsp;&nbsp;
           <input
             className="body-input"
             name="body"
@@ -60,7 +59,7 @@ class MainContainer extends Component {
           />
         </form>
         <form>
-          To
+          To: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input
             className="to-input"
             name="to"
@@ -69,7 +68,7 @@ class MainContainer extends Component {
           />
         </form>
         <form>
-          From
+          From:&nbsp;&nbsp;&nbsp;
           <input
             className="from-input"
             name="from"
