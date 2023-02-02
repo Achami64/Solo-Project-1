@@ -14,10 +14,6 @@ class CardCreator extends Component {
     const body = this.props.body;
     const to = this.props.to;
     const from = this.props.from;
-    console.log('title', this.props.title);
-    console.log('body', this.props.body);
-    console.log('to', this.props.to);
-    console.log('from', this.props.from);
 
     fetch('./cards', {
       method: 'POST',
@@ -35,10 +31,38 @@ class CardCreator extends Component {
           cards: [...this.props.cards, data],
         })
       );
-      window.location.reload(true);
+    window.location.reload(true);
   }
 
-  handleClickDelete() {}
+  handleClickDelete(event) {
+    if (event.key === '-') {
+      let index = -1;
+      for (let i = 0; i < this.props.cards.length; i++) {
+        if (this.props.cards[i]['title'] === event.target.value) {
+          index = i;
+        }
+      }
+      const title = this.props.cards[index]['title'];
+      const body = this.props.cards[index]['body'];
+      const to = this.props.cards[index]['to'];
+      const from = this.props.cards[index]['from'];
+
+      fetch('./cards', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: title,
+          body: body,
+          to: to,
+          from: from,
+        }),
+      });
+    } else {
+      return;
+    }
+    window.location.reload(true);
+  }
+
   render() {
     return (
       <div>
@@ -48,14 +72,18 @@ class CardCreator extends Component {
           body={this.props.body}
           to={this.props.to}
           from={this.props.from}
-          selection = {this.props.selection}
+          selection={this.props.selection}
         />
         <button className="addCard" onClick={this.handleClickAdd}>
           Add Card
         </button>
-        <button className="deleteCard" onClick={this.handleClickDelete}>
-          Delete Card
-        </button>
+        <input
+          className="delete-input"
+          name="delete"
+          placeholder="Enter Title of Card to Delete"
+          value={this.props.cards['title']}
+          onKeyDown={this.handleClickDelete}
+        />
       </div>
     );
   }

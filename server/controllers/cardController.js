@@ -54,6 +54,7 @@ cardController.deleteCard = async (req, res, next) => {
     });
   await deletedCard.remove();
   res.locals.deletedCard = deletedCard;
+  console.log('card deleted!');
   return next();
 };
 

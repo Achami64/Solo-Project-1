@@ -7,24 +7,13 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Lobster Two', cursive;
+  padding-bottom: 100px;
 }
 
 h1 {
   color: rgb(0, 13, 255);
   border-radius: 20px;
   padding: 10px 6px 10px 6px;
-}
-
-.main-tainer {
-  border-radius: 14px;
-  color: rgb(0, 13, 255);
-  font-size: 60px;
-  border: 5px solid black;
-  height: 600px;
-  width: 800px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 button {
@@ -37,10 +26,77 @@ button {
 .drop-down-menu {
   border-radius: 14px;
   border: 0.5px solid lightpink;
-  margin-bottom: 4px;
+  position: absolute;
+  top: 0;
+  left: 450px;
+  width: 200px;
 }
 
 input {
   border-radius: 14px;
   border: 0.5px solid lightpink;
+}
+
+/* .main-tainer {
+  border-radius: 14px;
+  color: rgb(0, 13, 255);
+  font-size: 60px;
+  border: 5px solid black;
+  height: 600px;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} */
+
+/* styles: [
+            // 1, white basic placeholder
+            {id: 1, style: {
+              
+            }},
+            // 2 snowy holiday
+            {id : 2, style: style2},
+            // 3 fall holiday
+            {id : 3, style: style3},
+            // 4 warm holiday
+            {id : 4, style: style4},
+            // 5 birthday
+            {id: 5, style: style5}
+          ] */
+
+.main-tainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 600px;
+  width: 800px;
+  margin-bottom: 12px;
+
+  border:solid 5vmin rgb(148, 74, 26);
+  border-bottom-color:rgb(141, 42, 24);
+  border-left-color:rgba(148, 75, 26, 0.306);
+  border-radius:2px;
+  border-right-color:rgba(148, 75, 26, 0.306);
+  border-top-color:rgb(141, 42, 24);
+  box-shadow:0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+  box-sizing:border-box;
+  height:80vh;
+  padding:8vmin;
+}
+
+.body {
+  font-size: 30px;
+  word-wrap: break-word;
+  text-align: center;
+
+}
+
+.title {
+  text-align: center;
+  font-size: 28px;
+}
+
+.to-from {
+  font-size: 20px;
+  text-align: center;
 }
