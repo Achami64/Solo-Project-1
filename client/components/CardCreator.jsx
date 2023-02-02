@@ -14,6 +14,10 @@ class CardCreator extends Component {
     const body = this.props.body;
     const to = this.props.to;
     const from = this.props.from;
+    if (to.toUpperCase() === 'YOUSUF'.toUpperCase() || from.toUpperCase() === 'YOUSUF' || title.toUpperCase() === 'YOUSUF' || body.toUpperCase() === 'YOUSUF') {
+      window.location.reload(true);
+      return;
+    } 
 
     fetch('./cards', {
       method: 'POST',
