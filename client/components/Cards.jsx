@@ -10,14 +10,14 @@ class Cards extends Component {
       styles: [
         // 1, white basic placeholder
         {
-          id: 1,
+          id: 'Select a Style',
           style: {
             backgroundColor: 'lightpink',
             color: 'darkblue',
           },
         },
         {
-          id: 2,
+          id: 1,
           style: {
             backgroundColor: 'purple',
             color: 'lightgray',
@@ -30,7 +30,7 @@ class Cards extends Component {
           },
         },
         {
-          id: 3,
+          id: 2,
           style: {
             backgroundColor: 'white',
             color: 'black',
@@ -43,7 +43,7 @@ class Cards extends Component {
           },
         },
         {
-          id: 4,
+          id: 3,
           style: {
             backgroundColor: 'rgb(218, 143, 142)',
             color: 'beige',
@@ -56,7 +56,7 @@ class Cards extends Component {
           },
         },
         {
-          id: 5,
+          id: 4,
           style: {
             backgroundColor: 'papayawhip',
             color: 'palevioletred',
